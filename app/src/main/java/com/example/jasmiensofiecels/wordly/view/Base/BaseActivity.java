@@ -1,9 +1,11 @@
-package com.example.jasmiensofiecels.wordly.view;
+package com.example.jasmiensofiecels.wordly.view.Base;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.jasmiensofiecels.wordly.R;
+import com.example.jasmiensofiecels.wordly.presenter.base.base.BaseView;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -17,7 +19,7 @@ import dagger.android.DaggerActivity;
  * Create by Jasmien Cels on 12/03/18
  */
 
-public class BaseActivity extends DaggerActivity {
+public class BaseActivity extends AppCompatActivity implements BaseView {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,6 +28,25 @@ public class BaseActivity extends DaggerActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
 
+    }
+
+    @Override
+    public boolean isNetworkConnected() {
+        return false;
+    }
+
+    @Override
+    public void turnOnLoading() {
+
+    }
+
+    @Override
+    public void turnOffLoading() {
+
+    }
+
+    @Override
+    public void onError(@NonNull String err) {
 
     }
 }

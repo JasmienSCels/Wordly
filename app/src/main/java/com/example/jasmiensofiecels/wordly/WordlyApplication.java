@@ -3,8 +3,6 @@ package com.example.jasmiensofiecels.wordly;
 import android.app.Activity;
 import android.app.Application;
 
-import com.example.jasmiensofiecels.wordly.view.di.component.ApplicationComponent;
-
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjector;
