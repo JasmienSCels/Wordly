@@ -21,7 +21,7 @@ public class DailyWordModule {
     }
 
     @Provides
-    public DailyWordPresenter provideDailyWordPresenter(DailyWordView view, DailyWordService service) {
+    public DailyWordPresenter provideDailyWordPresenter(DailyWordView view, OxfordDictionaryService service) {
         return new DailyWordPresenter(view, service);
     }
 

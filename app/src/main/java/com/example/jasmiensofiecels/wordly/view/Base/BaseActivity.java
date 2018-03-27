@@ -1,17 +1,15 @@
 package com.example.jasmiensofiecels.wordly.view.Base;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import com.example.jasmiensofiecels.wordly.R;
 import com.example.jasmiensofiecels.wordly.presenter.base.base.BaseView;
 
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import dagger.android.AndroidInjection;
-import dagger.android.DaggerActivity;
 
 /*
  * The purpose of this class is to represent the underlying activity that all other activities will inherit from.
