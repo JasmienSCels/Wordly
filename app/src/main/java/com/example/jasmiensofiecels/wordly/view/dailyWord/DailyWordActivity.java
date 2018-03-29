@@ -8,6 +8,10 @@ import com.example.jasmiensofiecels.wordly.view.Base.BaseActivity;
 
 import javax.inject.Inject;
 
+/*
+ * The purpose of this activity class is to display the word of the day to the user.
+ */
+
 public class DailyWordActivity extends BaseActivity implements DailyWordView {
 
     @Inject

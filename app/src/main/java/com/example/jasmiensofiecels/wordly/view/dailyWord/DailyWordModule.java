@@ -9,7 +9,7 @@ import dagger.Provides;
 
 /**
  * The purpose of this class is be represent the module
- * Created by jcels on 23/03/2018.
+ * Created by Jasmien Cels on 23/03/2018.
  */
 
 @Module

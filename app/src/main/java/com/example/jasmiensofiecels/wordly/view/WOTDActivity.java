@@ -13,6 +13,8 @@ import dagger.android.AndroidInjection;
 
 /*
  * The purpose of this view class is to display the word of the day.
+ *
+ * Created by Jasmien Cels on 23/03/2018.
  */
 
 public class WOTDActivity extends BaseActivity implements DailyWordView{

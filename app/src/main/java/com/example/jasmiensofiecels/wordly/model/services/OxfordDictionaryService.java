@@ -4,7 +4,8 @@ import com.example.jasmiensofiecels.wordly.presenter.base.dailyWord.DailyWordSer
 
 
 /**
- * The purpose of this class is to
+ * The purpose of this class is to represent the business logic of calling the Oxford Dictionary API to get the word of the
+ * day.
  * Created by Jasmien Cels on 23/03/2018.
  */
 
