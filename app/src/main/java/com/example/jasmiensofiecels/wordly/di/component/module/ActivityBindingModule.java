@@ -1,7 +1,7 @@
-package com.example.jasmiensofiecels.wordly.view.di.di.module;
+package com.example.jasmiensofiecels.wordly.di.component.module;
 
-import com.example.jasmiensofiecels.wordly.view.Base.BaseActivity;
-import com.example.jasmiensofiecels.wordly.view.Base.BaseModule;
+import com.example.jasmiensofiecels.wordly.view.base.BaseActivity;
+import com.example.jasmiensofiecels.wordly.view.base.BaseModule;
 import com.example.jasmiensofiecels.wordly.view.dailyWord.DailyWordActivity;
 import com.example.jasmiensofiecels.wordly.view.dailyWord.DailyWordModule;
 

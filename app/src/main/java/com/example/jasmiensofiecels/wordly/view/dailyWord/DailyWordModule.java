@@ -1,6 +1,5 @@
 package com.example.jasmiensofiecels.wordly.view.dailyWord;
 
-import com.example.jasmiensofiecels.wordly.model.services.OxfordDictionaryService;
 import com.example.jasmiensofiecels.wordly.presenter.base.dailyWord.DailyWordService;
 import com.example.jasmiensofiecels.wordly.presenter.base.dailyWord.DailyWordView;
 
@@ -21,14 +20,14 @@ public class DailyWordModule {
     }
 
     @Provides
-    public DailyWordPresenter provideDailyWordPresenter(DailyWordView view, OxfordDictionaryService service) {
-        return new DailyWordPresenter(view, service);
+    public DailyWordPresenter provideDailyWordPresenter(DailyWordView view) {
+        return new DailyWordPresenter(view);
     }
 
-    @Provides
-    public DailyWordService provideDailyWordService() {
-        return new OxfordDictionaryService();
-    }
+//    @Provides
+//    public DailyWordService provideDailyWordService() {
+//        return new OxfordDictionaryService();
+//    }
 
 
 }

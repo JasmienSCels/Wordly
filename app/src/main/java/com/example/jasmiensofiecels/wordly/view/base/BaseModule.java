@@ -1,7 +1,6 @@
-package com.example.jasmiensofiecels.wordly.view.Base;
+package com.example.jasmiensofiecels.wordly.view.base;
 
 import dagger.Module;
-import dagger.Provides;
 
 /**
  * The purpose of this class is to declare the module that defines the injectable classes.

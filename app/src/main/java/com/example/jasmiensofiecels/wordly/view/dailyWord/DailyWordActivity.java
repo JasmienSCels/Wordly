@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import com.example.jasmiensofiecels.wordly.R;
 import com.example.jasmiensofiecels.wordly.presenter.base.dailyWord.DailyWordView;
-import com.example.jasmiensofiecels.wordly.view.Base.BaseActivity;
+import com.example.jasmiensofiecels.wordly.view.base.BaseActivity;
 
 import javax.inject.Inject;
 

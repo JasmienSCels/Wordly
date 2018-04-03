@@ -1,4 +1,4 @@
-package com.example.jasmiensofiecels.wordly.view.di.di.module;
+package com.example.jasmiensofiecels.wordly.di.component.module;
 
 import android.app.Application;
 import android.content.Context;

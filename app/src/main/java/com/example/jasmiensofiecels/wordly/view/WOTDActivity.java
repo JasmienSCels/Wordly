@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import com.example.jasmiensofiecels.wordly.R;
 import com.example.jasmiensofiecels.wordly.presenter.base.dailyWord.DailyWordView;
-import com.example.jasmiensofiecels.wordly.view.Base.BaseActivity;
+import com.example.jasmiensofiecels.wordly.view.base.BaseActivity;
 import com.example.jasmiensofiecels.wordly.view.dailyWord.DailyWordPresenter;
 
 import javax.inject.Inject;
@@ -38,6 +38,6 @@ public class WOTDActivity extends BaseActivity implements DailyWordView{
 
     @Override
     public void refreshWordOfTheDay() {
-        presenter.getWord();
+        //presenter.getWord();
     }
 }

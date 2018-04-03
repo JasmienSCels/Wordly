@@ -1,10 +1,10 @@
-package com.example.jasmiensofiecels.wordly.view.di.di.component;
+package com.example.jasmiensofiecels.wordly.di.component.component;
 
 import android.app.Application;
 
 import com.example.jasmiensofiecels.wordly.WordlyApplication;
-import com.example.jasmiensofiecels.wordly.view.di.di.module.ActivityBindingModule;
-import com.example.jasmiensofiecels.wordly.view.di.di.module.AppModule;
+import com.example.jasmiensofiecels.wordly.di.component.module.ActivityBindingModule;
+import com.example.jasmiensofiecels.wordly.di.component.module.AppModule;
 
 import dagger.BindsInstance;
 import dagger.Component;

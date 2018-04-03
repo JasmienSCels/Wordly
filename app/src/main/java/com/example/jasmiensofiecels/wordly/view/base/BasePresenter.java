@@ -1,4 +1,4 @@
-package com.example.jasmiensofiecels.wordly.view.Base;
+package com.example.jasmiensofiecels.wordly.view.base;
 
 import com.example.jasmiensofiecels.wordly.presenter.base.base.BaseService;
 import com.example.jasmiensofiecels.wordly.presenter.base.base.BaseView;

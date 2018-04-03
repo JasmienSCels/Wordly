@@ -1,10 +1,9 @@
 package com.example.jasmiensofiecels.wordly.view.dailyWord;
 
-import com.example.jasmiensofiecels.wordly.model.services.OxfordDictionaryService;
 import com.example.jasmiensofiecels.wordly.presenter.base.base.BaseService;
 import com.example.jasmiensofiecels.wordly.presenter.base.dailyWord.DailyWordService;
 import com.example.jasmiensofiecels.wordly.presenter.base.dailyWord.DailyWordView;
-import com.example.jasmiensofiecels.wordly.view.Base.BasePresenter;
+import com.example.jasmiensofiecels.wordly.view.base.BasePresenter;
 
 /**
  * The purpose of this class is to represent the delegation between the view and its corresponding service. The service will retrieve
@@ -16,16 +15,16 @@ import com.example.jasmiensofiecels.wordly.view.Base.BasePresenter;
 public class DailyWordPresenter<V extends DailyWordView> extends BasePresenter<V> implements BaseService.BasePresenter<V>, DailyWordService.ResponseListener {
 
     private DailyWordView view;
-    private OxfordDictionaryService service;
+   // private OxfordDictionaryService service;
 
-    public DailyWordPresenter(DailyWordView view, OxfordDictionaryService service) {
+    public DailyWordPresenter(DailyWordView view) {
         this.view = view;
-        this.service = service;
+        //this.service = service;
     }
 
-    public void getWord() {
-        service.getWordOfTheDay(this);
-    }
+  //  public void getWord() {
+//        service.getWordOfTheDay(this);
+//    }
 
     @Override
     public void onSuccess() {
