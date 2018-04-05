@@ -1,13 +1,13 @@
 package com.example.jasmiensofiecels.wordly.viewModel;
 
 import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
 import com.example.jasmiensofiecels.wordly.service.model.OxfordEntry.Example;
 import com.example.jasmiensofiecels.wordly.service.repository.DictionaryRepository;
 
 /**
- *
  * The purpose of this class is...
  *
  * Created by Jasmien Cels on 04/04/2018.
@@ -15,20 +15,20 @@ import com.example.jasmiensofiecels.wordly.service.repository.DictionaryReposito
 
 public class DictionaryViewModel extends ViewModel {
 
-    public  LiveData<Example> resultObservable = new LiveData<Example>() {} ;
 
-    DictionaryRepository service = new DictionaryRepository();
+    private static MutableLiveData<Example> resultObservable = new MutableLiveData<Example>() {} ;
+
+    private DictionaryRepository service = new DictionaryRepository();
 
     public DictionaryViewModel() {
-
-        resultObservable = service.getWordOfTheDay("ace");
+            MutableLiveData<String> word = new MutableLiveData<>();
+            word.setValue("first");
+            resultObservable = service.getWordOfTheDay("en", word);
     }
 
-
-//    public DictionaryViewModel(@NonNull Application application) {
-//        super(application);
-//
-//    }
+    public void onWordRefresh(MutableLiveData<String> word) {
+        resultObservable = service.getWordOfTheDay("en", word);
+    }
 
     public LiveData<Example> getResultObservable() {
         return resultObservable;

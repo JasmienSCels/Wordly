@@ -6,4 +6,13 @@
     android:layout_height="match_parent"
     tools:context="com.example.jasmiensofiecels.wordly.view.dailyWord.DailyWordActivity">
 
+    <Button
+        android:id="@+id/refreshBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Refresh"
+        tools:layout_editor_absoluteX="250dp"
+        tools:layout_editor_absoluteY="206dp" />
+
+
 </android.support.constraint.ConstraintLayout>
