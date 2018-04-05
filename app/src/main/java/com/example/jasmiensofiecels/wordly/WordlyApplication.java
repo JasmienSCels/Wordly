@@ -3,6 +3,8 @@ package com.example.jasmiensofiecels.wordly;
 import android.app.Activity;
 import android.app.Application;
 
+import com.example.jasmiensofiecels.wordly.di.component.component.DaggerApplicationComponent;
+
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjector;
@@ -25,11 +27,16 @@ public class WordlyApplication extends Application implements HasActivityInjecto
     public void onCreate() {
         super.onCreate();
 
+        DaggerApplicationComponent.builder()
+                .contextPasser(this)
+                //.baseUrlModule(new BaseUrlModule("http://10.0.2.2:3000"))
+                .applicationPasser()
+                .inject(this);
+
     }
 
     @Override
     public AndroidInjector<Activity> activityInjector() {
-
         return activityInjector;
     }
 

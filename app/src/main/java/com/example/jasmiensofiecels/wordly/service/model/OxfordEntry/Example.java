@@ -1,15 +1,15 @@
 package com.example.jasmiensofiecels.wordly.service.model.OxfordEntry;
 
-import java.util.List;
-
 import com.google.auto.value.AutoValue;
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 /**
- * Created by jcels on 03/04/2018.
+ * Created by Jasmien Cels on 03/04/2018.
  */
 
 

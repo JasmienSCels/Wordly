@@ -15,7 +15,7 @@ import com.example.jasmiensofiecels.wordly.view.base.BasePresenter;
 public class DailyWordPresenter<V extends DailyWordView> extends BasePresenter<V> implements BaseService.BasePresenter<V>, DailyWordService.ResponseListener {
 
     private DailyWordView view;
-   // private OxfordDictionaryService service;
+   // private OxfordDictionaryAPI service;
 
     public DailyWordPresenter(DailyWordView view) {
         this.view = view;

@@ -5,9 +5,11 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.jasmiensofiecels.wordly.R;
+import com.example.jasmiensofiecels.wordly.di.component.component.ApplicationComponent;
 import com.example.jasmiensofiecels.wordly.presenter.base.base.BaseView;
 
 import javax.annotation.Nullable;
+import javax.inject.Inject;
 
 import dagger.android.AndroidInjection;
 
@@ -18,6 +20,8 @@ import dagger.android.AndroidInjection;
  */
 
 public class BaseActivity extends AppCompatActivity implements BaseView {
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

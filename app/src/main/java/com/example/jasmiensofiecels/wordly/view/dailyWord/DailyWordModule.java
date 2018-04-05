@@ -1,6 +1,5 @@
 package com.example.jasmiensofiecels.wordly.view.dailyWord;
 
-import com.example.jasmiensofiecels.wordly.presenter.base.dailyWord.DailyWordService;
 import com.example.jasmiensofiecels.wordly.presenter.base.dailyWord.DailyWordView;
 
 import dagger.Module;
@@ -25,8 +24,8 @@ public class DailyWordModule {
     }
 
 //    @Provides
-//    public DailyWordService provideDailyWordService() {
-//        return new OxfordDictionaryService();
+//    public OxfordDictionaryAPI provideDailyWordService() {
+//        return new OxfordDictionaryAPI();
 //    }
 
 
