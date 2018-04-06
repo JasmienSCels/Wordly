@@ -14,6 +14,7 @@ import com.example.jasmiensofiecels.wordly.presenter.base.dailyWord.DailyWordVie
 import com.example.jasmiensofiecels.wordly.service.model.OxfordEntry.Example;
 import com.example.jasmiensofiecels.wordly.view.base.BaseActivity;
 import com.example.jasmiensofiecels.wordly.viewModel.DictionaryViewModel;
+import com.example.jasmiensofiecels.wordly.viewModel.DictionaryViewModelFactory;
 
 import javax.inject.Inject;
 
@@ -27,12 +28,14 @@ import dagger.android.AndroidInjection;
 
 public class DailyWordActivity extends BaseActivity implements DailyWordView {
 
+    @Inject
+    DictionaryViewModelFactory factory;
+
     Button refreshBtn;
+
 
     @Inject
     DailyWordPresenter presenter;
-
-    private MutableLiveData<String> wordId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +43,8 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_word);
 
-        //Create the view model
-        final DictionaryViewModel viewModel = ViewModelProviders.of(this).get(DictionaryViewModel.class);
+        //Create the view model, which is injected via the factory.
+        final DictionaryViewModel viewModel = ViewModelProviders.of(this, factory).get(DictionaryViewModel.class);
         observeViewModel(viewModel);
 
 
@@ -57,8 +60,6 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
                 observeViewModel(viewModel);
             }
         });
-
-
     }
 
     private void observeViewModel(final DictionaryViewModel viewModel) {

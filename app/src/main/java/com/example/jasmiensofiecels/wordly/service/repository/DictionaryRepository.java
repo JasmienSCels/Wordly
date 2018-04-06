@@ -14,8 +14,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- *
- * The purpose of this class is to ....
+ * The purpose of this class is to call the Oxford Dictionary API and
+ * return a gson Example object to the observable's subscriber.
  *
  * Created by Jasmien Cels on 03/04/2018.
  */
@@ -31,6 +31,7 @@ public class DictionaryRepository {
         //to serialize to gson
         Gson gson = new GsonBuilder().setLenient().create();
 
+        //Set up Retrofit call
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(HTTPS_OXFORD_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
@@ -38,8 +39,11 @@ public class DictionaryRepository {
 
         OxfordDictionaryAPI oxfordDictionaryAPI = retrofit.create(OxfordDictionaryAPI.class);
 
+        //Convert MutableLiveData to String
         String word = wordID.getValue();
 
+        //API call for word entry
+        //TODO: Store id and key in string file.
         Call<Example> call = oxfordDictionaryAPI.getWordOfTheDay( "application/json","cda190b7", "fe4d42ccf21a2db3396e370769987348",sourceLang, word);
         call.enqueue(new Callback<Example>() {
 
@@ -54,7 +58,6 @@ public class DictionaryRepository {
                 Log.d("repository response", "Failure: " + t.getMessage());
 
             }
-
             //TODO: Error Handeling
         });
 

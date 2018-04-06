@@ -22,10 +22,6 @@ public class DailyWordPresenter<V extends DailyWordView> extends BasePresenter<V
         //this.service = service;
     }
 
-  //  public void getWord() {
-//        service.getWordOfTheDay(this);
-//    }
-
     @Override
     public void onSuccess() {
         //TODO: should accept the word object or string as param.
