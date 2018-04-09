@@ -1,6 +1,5 @@
 package com.example.jasmiensofiecels.wordly.view.dailyWord;
 
-import com.example.jasmiensofiecels.wordly.presenter.base.dailyWord.DailyWordView;
 import com.example.jasmiensofiecels.wordly.viewModel.DictionaryViewModelFactory;
 
 import dagger.Module;
@@ -24,11 +23,6 @@ public class DailyWordModule {
     @Provides
     public DailyWordView provideDailyWordView(DailyWordActivity activity) {
         return activity;
-    }
-
-    @Provides
-    public DailyWordPresenter provideDailyWordPresenter(DailyWordView view) {
-        return new DailyWordPresenter(view);
     }
 
 }

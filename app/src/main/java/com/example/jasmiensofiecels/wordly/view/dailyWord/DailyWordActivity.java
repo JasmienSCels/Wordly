@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.jasmiensofiecels.wordly.R;
-import com.example.jasmiensofiecels.wordly.presenter.base.dailyWord.DailyWordView;
 import com.example.jasmiensofiecels.wordly.service.model.OxfordEntry.Example;
 import com.example.jasmiensofiecels.wordly.view.base.BaseActivity;
 import com.example.jasmiensofiecels.wordly.viewModel.DictionaryViewModel;
@@ -33,10 +32,6 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
 
     Button refreshBtn;
 
-
-    @Inject
-    DailyWordPresenter presenter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);
@@ -46,7 +41,6 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
         //Create the view model, which is injected via the factory.
         final DictionaryViewModel viewModel = ViewModelProviders.of(this, factory).get(DictionaryViewModel.class);
         observeViewModel(viewModel);
-
 
         refreshBtn = findViewById(R.id.refreshBtn);
         refreshBtn.setOnClickListener(new View.OnClickListener() {

@@ -30,9 +30,6 @@ public interface ApplicationComponent extends AndroidInjector<WordlyApplication>
 
         public ApplicationComponent applicationPasser();
 
-      //  public Builder baseUrlModule(BaseUrlModule baseUrlModule);
-
-
     }
 
 }

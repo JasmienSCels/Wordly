@@ -1,6 +1,6 @@
-package com.example.jasmiensofiecels.wordly.presenter.base.dailyWord;
+package com.example.jasmiensofiecels.wordly.view.dailyWord;
 
-import com.example.jasmiensofiecels.wordly.presenter.base.base.BaseView;
+import com.example.jasmiensofiecels.wordly.view.base.BaseView;
 
 /**
  * The purpose of this interface is to present the methods that must be implemented by the activity.

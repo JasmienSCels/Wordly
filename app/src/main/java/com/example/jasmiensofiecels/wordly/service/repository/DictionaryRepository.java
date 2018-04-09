@@ -15,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * The purpose of this class is to call the Oxford Dictionary API and
- * return a gson Example object to the observable's subscriber.
+ * return a Gson Example object to the observable's subscriber.
  *
  * Created by Jasmien Cels on 03/04/2018.
  */

@@ -11,5 +11,4 @@ import dagger.Module;
 @Module
 public class BaseModule {
 
-
 }

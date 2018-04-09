@@ -1,4 +1,4 @@
-package com.example.jasmiensofiecels.wordly.presenter.base.base;
+package com.example.jasmiensofiecels.wordly.view.base;
 
 import android.support.annotation.NonNull;
 
