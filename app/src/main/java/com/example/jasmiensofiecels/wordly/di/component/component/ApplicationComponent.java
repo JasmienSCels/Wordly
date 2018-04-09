@@ -12,8 +12,9 @@ import dagger.android.AndroidInjectionModule;
 import dagger.android.AndroidInjector;
 
 /**
- * The purpose of this interface is to represent the injector class.
- * It will build the component graph, which will provided injected instances through modules.
+ * The purpose of this interface is to represent the dependency graph.
+ * It will build the component graph, bridging the gap between Inject and Module.
+ * Provides the dependencies for classes that request them.
  *
  * Created by Jasmien Cels on 12/03/2018.
  */

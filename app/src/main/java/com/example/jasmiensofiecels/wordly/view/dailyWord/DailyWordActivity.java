@@ -39,6 +39,7 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
         setContentView(R.layout.activity_daily_word);
 
         //Create the view model, which is injected via the factory.
+        //TODO: does the viewModel need to be injected?
         final DictionaryViewModel viewModel = ViewModelProviders.of(this, factory).get(DictionaryViewModel.class);
         observeViewModel(viewModel);
 

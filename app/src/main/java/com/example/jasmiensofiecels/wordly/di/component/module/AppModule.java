@@ -3,6 +3,8 @@ package com.example.jasmiensofiecels.wordly.di.component.module;
 import android.app.Application;
 import android.content.Context;
 
+import javax.inject.Singleton;
+
 import dagger.Binds;
 import dagger.Module;
 
@@ -16,5 +18,6 @@ import dagger.Module;
 public abstract class AppModule {
 
     @Binds
+    @Singleton
     public abstract Context bindContext(Application application);
 }

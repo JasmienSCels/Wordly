@@ -15,11 +15,14 @@ import com.example.jasmiensofiecels.wordly.service.repository.DictionaryReposito
 
 public class DictionaryViewModel extends ViewModel {
 
+//    @Inject
+//    public DictionaryRepository service;
 
     private static MutableLiveData<Example> resultObservable = new MutableLiveData<Example>() {} ;
 
     private DictionaryRepository service = new DictionaryRepository();
 
+    //@Inject
     public DictionaryViewModel() {
             MutableLiveData<String> word = new MutableLiveData<>();
             word.setValue("first");

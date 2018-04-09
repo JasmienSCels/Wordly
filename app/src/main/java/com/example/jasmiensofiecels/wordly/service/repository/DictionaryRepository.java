@@ -7,6 +7,8 @@ import com.example.jasmiensofiecels.wordly.service.model.OxfordEntry.Example;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import javax.inject.Inject;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -23,6 +25,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class DictionaryRepository {
 
     private final String HTTPS_OXFORD_URL = "https://od-api.oxforddictionaries.com:443/api/v1/";
+
+    @Inject
+    public DictionaryRepository() {}
 
     public MutableLiveData<Example> getWordOfTheDay(String sourceLang,  MutableLiveData<String> wordID) {
 

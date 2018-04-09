@@ -15,10 +15,20 @@ import dagger.Provides;
 @Module
 public class DailyWordModule {
 
+//    @Provides
+//    public DictionaryRepository provideDictionaryRepository() {
+//        return new DictionaryRepository();
+//    }
+
     @Provides
     public DictionaryViewModelFactory provideDictionaryViewModelFactory() {
         return new DictionaryViewModelFactory();
     }
+
+//    @Provides
+//    public DictionaryViewModel provideDictionaryViewModel() {
+//        return new DictionaryViewModel();
+//    }
 
     @Provides
     public DailyWordView provideDailyWordView(DailyWordActivity activity) {

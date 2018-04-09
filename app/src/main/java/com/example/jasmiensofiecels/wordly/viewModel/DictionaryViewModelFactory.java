@@ -14,6 +14,9 @@ import android.support.annotation.NonNull;
 
 public class DictionaryViewModelFactory implements ViewModelProvider.Factory {
 
+//    @Inject
+//    DictionaryViewModel viewModel;
+
     @NonNull
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
