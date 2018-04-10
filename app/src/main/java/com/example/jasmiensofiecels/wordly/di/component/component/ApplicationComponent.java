@@ -6,6 +6,8 @@ import com.example.jasmiensofiecels.wordly.WordlyApplication;
 import com.example.jasmiensofiecels.wordly.di.component.module.ActivityBindingModule;
 import com.example.jasmiensofiecels.wordly.di.component.module.AppModule;
 
+import javax.inject.Singleton;
+
 import dagger.BindsInstance;
 import dagger.Component;
 import dagger.android.AndroidInjectionModule;
@@ -20,6 +22,7 @@ import dagger.android.AndroidInjector;
  */
 
 @Component(modules = {AndroidInjectionModule.class, ActivityBindingModule.class, AppModule.class})
+@Singleton
 public interface ApplicationComponent extends AndroidInjector<WordlyApplication> {
 
     //Bind instances to the component.

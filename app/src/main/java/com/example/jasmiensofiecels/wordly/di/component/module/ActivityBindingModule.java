@@ -5,6 +5,8 @@ import com.example.jasmiensofiecels.wordly.view.base.BaseModule;
 import com.example.jasmiensofiecels.wordly.view.dailyWord.DailyWordActivity;
 import com.example.jasmiensofiecels.wordly.view.dailyWord.DailyWordModule;
 
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.android.AndroidInjectionModule;
 import dagger.android.ContributesAndroidInjector;
@@ -16,6 +18,7 @@ import dagger.android.ContributesAndroidInjector;
  */
 
 //Bindings to ensure the usability of the dagger framework.
+@Singleton
 @Module(includes = AndroidInjectionModule.class)
 public abstract class ActivityBindingModule {
 
