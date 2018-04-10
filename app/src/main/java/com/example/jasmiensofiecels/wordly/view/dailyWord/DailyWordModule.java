@@ -26,9 +26,4 @@ public class DailyWordModule {
         return new DictionaryViewModelFactory(repository);
     }
 
-    @Provides
-    public DailyWordView provideDailyWordView(DailyWordActivity activity) {
-        return activity;
-    }
-
 }

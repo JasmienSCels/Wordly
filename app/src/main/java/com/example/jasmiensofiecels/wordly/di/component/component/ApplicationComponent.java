@@ -21,8 +21,8 @@ import dagger.android.AndroidInjector;
  * Created by Jasmien Cels on 12/03/2018.
  */
 
-@Component(modules = {AndroidInjectionModule.class, ActivityBindingModule.class, AppModule.class})
 @Singleton
+@Component(modules = {AndroidInjectionModule.class, ActivityBindingModule.class, AppModule.class})
 public interface ApplicationComponent extends AndroidInjector<WordlyApplication> {
 
     //Bind instances to the component.
