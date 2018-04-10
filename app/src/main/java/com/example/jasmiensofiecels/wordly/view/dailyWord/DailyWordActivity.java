@@ -21,6 +21,7 @@ import dagger.android.AndroidInjection;
 
 /*
  * The purpose of this activity class is to display the word of the day to the user.
+ * User input is delegated to the viewModel to retrieve a word definition.
  *
  * Created by Jasmien Cels on 23/03/2018.
  */
@@ -32,6 +33,8 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
 
     Button refreshBtn;
 
+    private DictionaryViewModel viewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);
@@ -39,8 +42,7 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
         setContentView(R.layout.activity_daily_word);
 
         //Create the view model, which is injected via the factory.
-        //TODO: does the viewModel need to be injected?
-        final DictionaryViewModel viewModel = ViewModelProviders.of(this, factory).get(DictionaryViewModel.class);
+        viewModel = ViewModelProviders.of(this, factory).get(DictionaryViewModel.class);
         observeViewModel(viewModel);
 
         refreshBtn = findViewById(R.id.refreshBtn);

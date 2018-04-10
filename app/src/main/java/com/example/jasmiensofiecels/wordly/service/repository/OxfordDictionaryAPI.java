@@ -8,7 +8,8 @@ import retrofit2.http.Header;
 import retrofit2.http.Path;
 
 /**
- * The purpose of this interface is to ....
+ * The purpose of this interface is to define the HTTP operations.
+ *
  * Created by Jasmien Cels on 03/04/2018.
  */
 

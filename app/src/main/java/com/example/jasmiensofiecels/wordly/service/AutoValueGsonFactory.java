@@ -4,7 +4,8 @@ import com.google.gson.TypeAdapterFactory;
 import com.ryanharter.auto.value.gson.GsonTypeAdapterFactory;
 
 /**
- * The purpose of this class is ..
+ * The purpose of this class is to generate a factory to instantiate all AutoValue GSON classes.
+ *
  * Created by Jasmien Cels on 05/04/2018.
  */
 

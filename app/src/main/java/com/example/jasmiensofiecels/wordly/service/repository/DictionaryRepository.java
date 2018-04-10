@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,18 +23,19 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by Jasmien Cels on 03/04/2018.
  */
 
+@Singleton
 public class DictionaryRepository {
-
-    private final String HTTPS_OXFORD_URL = "https://od-api.oxforddictionaries.com:443/api/v1/";
 
     @Inject
     public DictionaryRepository() {}
+
+    private final String HTTPS_OXFORD_URL = "https://od-api.oxforddictionaries.com:443/api/v1/";
 
     public MutableLiveData<Example> getWordOfTheDay(String sourceLang,  MutableLiveData<String> wordID) {
 
         final MutableLiveData<Example> results = new MutableLiveData<>();
 
-        //to serialize to gson
+        //Serialize to Gson
         Gson gson = new GsonBuilder().setLenient().create();
 
         //Set up Retrofit call
@@ -49,7 +51,7 @@ public class DictionaryRepository {
 
         //API call for word entry
         //TODO: Store id and key in string file.
-        Call<Example> call = oxfordDictionaryAPI.getWordOfTheDay( "application/json","cda190b7", "fe4d42ccf21a2db3396e370769987348",sourceLang, word);
+        Call<Example> call = oxfordDictionaryAPI.getWordOfTheDay( "application/json","cda190b7", "fe4d42ccf21a2db3396e370769987348", sourceLang, word);
         call.enqueue(new Callback<Example>() {
 
             @Override

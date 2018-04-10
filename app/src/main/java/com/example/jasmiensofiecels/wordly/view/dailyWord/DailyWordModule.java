@@ -1,5 +1,6 @@
 package com.example.jasmiensofiecels.wordly.view.dailyWord;
 
+import com.example.jasmiensofiecels.wordly.service.repository.DictionaryRepository;
 import com.example.jasmiensofiecels.wordly.viewModel.DictionaryViewModelFactory;
 
 import dagger.Module;
@@ -15,20 +16,15 @@ import dagger.Provides;
 @Module
 public class DailyWordModule {
 
-//    @Provides
-//    public DictionaryRepository provideDictionaryRepository() {
-//        return new DictionaryRepository();
-//    }
-
     @Provides
-    public DictionaryViewModelFactory provideDictionaryViewModelFactory() {
-        return new DictionaryViewModelFactory();
+    public DictionaryRepository provideDictionaryRepository() {
+        return new DictionaryRepository();
     }
 
-//    @Provides
-//    public DictionaryViewModel provideDictionaryViewModel() {
-//        return new DictionaryViewModel();
-//    }
+    @Provides
+    public DictionaryViewModelFactory provideDictionaryViewModelFactory(DictionaryRepository repository) {
+        return new DictionaryViewModelFactory(repository);
+    }
 
     @Provides
     public DailyWordView provideDailyWordView(DailyWordActivity activity) {

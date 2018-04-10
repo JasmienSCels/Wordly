@@ -9,7 +9,7 @@ import dagger.Binds;
 import dagger.Module;
 
 /**
- * The purpose of this class is to
+ * The purpose of this class is to enable application context injection application wide.
  *
  * Created by Jasmien Cels on 23/03/2018.
  */

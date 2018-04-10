@@ -14,7 +14,7 @@ import dagger.android.HasActivityInjector;
 /**
  * The purpose of this class is to represent the entry point for the dependency injection.
  * Activities are presented here to participate in the injection process.
- * Created by jasmiensofiecels on 12/03/2018.
+ * Created by Jasmiens Cels on 12/03/2018.
  */
 
 public class WordlyApplication extends Application implements HasActivityInjector {
