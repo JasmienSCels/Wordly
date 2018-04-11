@@ -13,7 +13,7 @@ import dagger.Provides;
  * Created by Jasmien Cels on 23/03/2018.
  */
 
-@Module
+@Module 
 public class DailyWordModule {
 
     @Provides

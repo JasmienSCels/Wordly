@@ -19,7 +19,6 @@ import dagger.android.HasActivityInjector;
 
 public class WordlyApplication extends Application implements HasActivityInjector {
 
-
     @Inject
     DispatchingAndroidInjector<Activity> activityInjector;
 
