@@ -8,6 +8,8 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.jasmiensofiecels.wordly.R;
 import com.example.jasmiensofiecels.wordly.service.model.OxfordEntry.Example;
@@ -31,7 +33,10 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
     @Inject
     DictionaryViewModelFactory factory;
 
+    //UI Widgets
     Button refreshBtn;
+    EditText searchTv;
+    TextView wordTitle;
 
     private DictionaryViewModel viewModel;
 
@@ -45,12 +50,19 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
         viewModel = ViewModelProviders.of(this, factory).get(DictionaryViewModel.class);
         observeViewModel(viewModel);
 
-        refreshBtn = findViewById(R.id.refreshBtn);
+
+        searchTv = findViewById(R.id.search_word_et);
+        wordTitle = findViewById(R.id.defined_word_tv);
+
+
+        refreshBtn = findViewById(R.id.search_btn);
         refreshBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MutableLiveData<String> wordChange = new MutableLiveData<>();
-                wordChange.setValue("second");
+
+                //TODO: Check against null inputs
+                wordChange.setValue(searchTv.getText().toString());
                 viewModel.onWordRefresh(wordChange);
 
                 //TODO: why do I need to observe again??? Scope?
@@ -63,15 +75,15 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
         viewModel.getResultObservable().observe(this, new Observer<Example>() {
             @Override
             public void onChanged(@Nullable Example response) {
-                //TODO: update UI
+                renderWordOfTheDay(response);
                 Log.d("Observable", response.getResults().get(0).getWord());
             }
         });
     }
 
     @Override
-    public void renderWordOfTheDay() {
-
+    public void renderWordOfTheDay(Example response) {
+        wordTitle.setText(response.getResults().get(0).getId());
     }
 
     @Override

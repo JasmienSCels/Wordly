@@ -18,7 +18,7 @@ public class DictionaryViewModel extends ViewModel {
 
     public DictionaryRepository repository;
 
-    private static MutableLiveData<Example> resultObservable = new MutableLiveData<Example>() {} ;
+    private static MutableLiveData<Example> resultObservable = new MutableLiveData<>();
 
 
     public DictionaryViewModel(DictionaryRepository repository) {
@@ -28,6 +28,8 @@ public class DictionaryViewModel extends ViewModel {
         word.setValue("first");
         resultObservable = this.repository.getWordOfTheDay("en", word);
     }
+
+
 
     public void onWordRefresh(MutableLiveData<String> word) {
         resultObservable = repository.getWordOfTheDay("en", word);

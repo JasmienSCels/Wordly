@@ -1,18 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jasmiensofiecels.wordly.view.dailyWord.DailyWordActivity">
+    android:minHeight="0dp"
+    tools:context="com.example.jasmiensofiecels.wordly.view.dailyWord.DailyWordActivity"
+    tools:layout_editor_absoluteY="81dp">
 
-    <Button
-        android:id="@+id/refreshBtn"
-        android:layout_width="wrap_content"
+        <!--Search word Multi-Auto Complete -->
+    <LinearLayout
+        android:id="@+id/search_layout_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <EditText
+            android:id="@+id/search_word_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Search Word" />
+
+    </LinearLayout>
+
+
+        <!--Definition Displayed-->
+    <LinearLayout
+        android:id="@+id/definition_layout_linear"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Refresh"
-        tools:layout_editor_absoluteX="250dp"
-        tools:layout_editor_absoluteY="206dp" />
+
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="222dp">
+
+        <TextView
+            android:id="@+id/defined_word_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="word"
+            android:text="Word"
+            android:textColor="@color/colorAccent" />
+
+        <Button
+            android:id="@+id/search_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search"
+            tools:layout_editor_absoluteX="205dp"
+            tools:layout_editor_absoluteY="297dp" />
+
+    </LinearLayout>
 
 
 </android.support.constraint.ConstraintLayout>

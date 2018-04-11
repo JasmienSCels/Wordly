@@ -1,5 +1,6 @@
 package com.example.jasmiensofiecels.wordly.view.dailyWord;
 
+import com.example.jasmiensofiecels.wordly.service.model.OxfordEntry.Example;
 import com.example.jasmiensofiecels.wordly.view.base.BaseView;
 
 /**
@@ -10,7 +11,7 @@ import com.example.jasmiensofiecels.wordly.view.base.BaseView;
 
 public interface DailyWordView extends BaseView {
 
-    void renderWordOfTheDay();
+    void renderWordOfTheDay(Example response);
 
     void refreshWordOfTheDay();
 

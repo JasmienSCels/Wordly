@@ -20,6 +20,7 @@ public class Example {
     @SerializedName("metadata")
     @Expose
     private Metadata metadata;
+
     @SerializedName("results")
     @Expose
     private List<Result> results = null;
