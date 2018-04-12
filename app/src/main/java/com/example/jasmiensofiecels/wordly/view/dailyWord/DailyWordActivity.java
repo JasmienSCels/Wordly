@@ -5,11 +5,11 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.jasmiensofiecels.wordly.R;
 import com.example.jasmiensofiecels.wordly.service.model.OxfordEntry.Example;
@@ -69,7 +69,11 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
             public void onClick(View v) {
                 MutableLiveData<String> wordChange = new MutableLiveData<>();
 
-                //TODO: Check against null inputs
+                //Check against null inputs
+                if(searchTv.getText().toString().equals("")) {
+                    renderInvalidSearchInput("Invalid Input");
+                    return;
+                }
                 wordChange.setValue(searchTv.getText().toString());
                 viewModel.onWordRefresh(wordChange);
 
@@ -83,8 +87,11 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
         viewModel.getResultObservable().observe(this, new Observer<Example>() {
             @Override
             public void onChanged(@Nullable Example response) {
+                if(response == null) {
+                    renderInvalidSearchInput("Word not found");
+                    return;
+                }
                 renderWordInformation(response);
-                Log.d("Observable", response.getResults().get(0).getLexicalEntries().get(0).getText());
             }
         });
     }
@@ -95,7 +102,14 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
         wordPhonetic.setText(response.getResults().get(0).getLexicalEntries().get(0).getPronunciations().get(0).getPhoneticSpelling());
         wordLexical.setText(response.getResults().get(0).getLexicalEntries().get(0).getLexicalCategory());
         wordDefinition.setText(response.getResults().get(0).getLexicalEntries().get(0).getEntries().get(0).getSenses().get(0).getDefinitions().get(0));
-        wordOrigin.setText(response.getResults().get(0).getLexicalEntries().get(0).getEntries().get(0).getEtymologies().get(0));
+
+//        if(!response.getResults().get(0).getLexicalEntries().get(0).getEntries().get(0).getEtymologies().get(0).isEmpty()) {
+//            wordOrigin.setText(response.getResults().get(0).getLexicalEntries().get(0).getEntries().get(0).getEtymologies().get(0));
+//        }
+    }
+
+    public void renderInvalidSearchInput(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
 }

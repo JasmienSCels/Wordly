@@ -56,6 +56,10 @@ public class DictionaryRepository {
 
             @Override
             public void onResponse(Call<Example> call, Response<Example> response) {
+                if(response.body() == null) {
+                    results.setValue(null);
+                    return;
+                }
                 Log.d("repository response", response.body().getResults().get(0).getWord());
                 results.setValue(response.body());
             }
