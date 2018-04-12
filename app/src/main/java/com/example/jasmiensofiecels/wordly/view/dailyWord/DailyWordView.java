@@ -11,8 +11,6 @@ import com.example.jasmiensofiecels.wordly.view.base.BaseView;
 
 public interface DailyWordView extends BaseView {
 
-    void renderWordOfTheDay(Example response);
-
-    void refreshWordOfTheDay();
+    void renderWordInformation(Example response);
 
 }

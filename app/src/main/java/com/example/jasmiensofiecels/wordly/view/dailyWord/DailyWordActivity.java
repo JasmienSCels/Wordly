@@ -35,8 +35,13 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
 
     //UI Widgets
     Button refreshBtn;
+
     EditText searchTv;
     TextView wordTitle;
+    TextView wordPhonetic;
+    TextView wordLexical;
+    TextView wordDefinition;
+    TextView wordOrigin;
 
     private DictionaryViewModel viewModel;
 
@@ -53,7 +58,10 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
 
         searchTv = findViewById(R.id.search_word_et);
         wordTitle = findViewById(R.id.defined_word_tv);
-
+        wordPhonetic = findViewById(R.id.word_phonetic);
+        wordLexical = findViewById(R.id.word_lexical_category);
+        wordDefinition = findViewById(R.id.word_definition);
+        wordOrigin = findViewById(R.id.word_origin);
 
         refreshBtn = findViewById(R.id.search_btn);
         refreshBtn.setOnClickListener(new View.OnClickListener() {
@@ -75,19 +83,19 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
         viewModel.getResultObservable().observe(this, new Observer<Example>() {
             @Override
             public void onChanged(@Nullable Example response) {
-                renderWordOfTheDay(response);
-                Log.d("Observable", response.getResults().get(0).getWord());
+                renderWordInformation(response);
+                Log.d("Observable", response.getResults().get(0).getLexicalEntries().get(0).getText());
             }
         });
     }
 
     @Override
-    public void renderWordOfTheDay(Example response) {
+    public void renderWordInformation(Example response) {
         wordTitle.setText(response.getResults().get(0).getId());
+        wordPhonetic.setText(response.getResults().get(0).getLexicalEntries().get(0).getPronunciations().get(0).getPhoneticSpelling());
+        wordLexical.setText(response.getResults().get(0).getLexicalEntries().get(0).getLexicalCategory());
+        wordDefinition.setText(response.getResults().get(0).getLexicalEntries().get(0).getEntries().get(0).getSenses().get(0).getDefinitions().get(0));
+        wordOrigin.setText(response.getResults().get(0).getLexicalEntries().get(0).getEntries().get(0).getEtymologies().get(0));
     }
 
-    @Override
-    public void refreshWordOfTheDay() {
-
-    }
 }

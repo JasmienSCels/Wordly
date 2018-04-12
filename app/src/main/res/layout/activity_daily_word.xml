@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:minHeight="0dp"
     tools:context="com.example.jasmiensofiecels.wordly.view.dailyWord.DailyWordActivity"
     tools:layout_editor_absoluteY="81dp">
+
 
         <!--Search word Multi-Auto Complete -->
     <LinearLayout
@@ -19,7 +20,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Search Word" />
+            android:hint="Search"
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-"
+            />
 
     </LinearLayout>
 
@@ -29,29 +32,116 @@
         android:id="@+id/definition_layout_linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_alignParentBottom="true"
+        android:layout_below="@+id/search_layout_linear"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="222dp">
 
-        <TextView
-            android:id="@+id/defined_word_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="word"
-            android:text="Word"
-            android:textColor="@color/colorAccent" />
 
-        <Button
-            android:id="@+id/search_btn"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/layout_word_tittle"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Search"
-            tools:layout_editor_absoluteX="205dp"
-            tools:layout_editor_absoluteY="297dp" />
+            android:layout_gravity="top"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/defined_word_tv"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="word"
+                android:text="Word"
+                android:textColor="@color/colorAccent"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/word_phonetic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Phonetic Spelling" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_word_lexical_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/layout_word_tittle">
+
+            <TextView
+                android:id="@+id/word_lexical_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:textColor="@color/colorAccent"
+                android:hint="Lexical Category" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_word_definition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/layout_word_lexical_category">
+
+            <TextView
+                android:id="@+id/word_definition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:textColor="@color/colorAccent"
+                android:hint="Definition Origin" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layout_word_origin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/layout_word_definition">
+
+            <TextView
+                android:id="@+id/word_origin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:textColor="@color/colorAccent"
+                android:hint="Definition Origin" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/layout_search_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/word_origin"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/search_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:soundEffectsEnabled="true"
+                android:text="Search"
+                android:textStyle="normal"
+                tools:layout_editor_absoluteX="205dp"
+                tools:layout_editor_absoluteY="297dp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

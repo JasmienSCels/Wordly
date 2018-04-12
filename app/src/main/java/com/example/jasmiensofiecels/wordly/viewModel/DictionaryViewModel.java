@@ -24,9 +24,9 @@ public class DictionaryViewModel extends ViewModel {
     public DictionaryViewModel(DictionaryRepository repository) {
         this.repository = repository;
 
-        MutableLiveData<String> word = new MutableLiveData<>();
-        word.setValue("first");
-        resultObservable = this.repository.getWordOfTheDay("en", word);
+//        MutableLiveData<String> word = new MutableLiveData<>();
+//        word.setValue("");
+//        resultObservable = this.repository.getWordOfTheDay("en", word);
     }
 
 
