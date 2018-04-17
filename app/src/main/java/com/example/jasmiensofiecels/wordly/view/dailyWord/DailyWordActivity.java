@@ -5,6 +5,9 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +22,8 @@ import com.example.jasmiensofiecels.wordly.viewModel.DictionaryViewModelFactory;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import dagger.android.AndroidInjection;
 
 /*
@@ -34,34 +39,37 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
     DictionaryViewModelFactory factory;
 
     //UI Widgets
+    @BindView(R.id.search_btn)
     Button refreshBtn;
 
+    @BindView(R.id.search_word_et)
     EditText searchTv;
+
+    @BindView(R.id.defined_word_tv)
     TextView wordTitle;
+
+    @BindView(R.id.word_phonetic)
     TextView wordPhonetic;
+
+    @BindView(R.id.word_lexical_category)
     TextView wordLexical;
-    TextView wordDefinition;
-    TextView wordOrigin;
+
+    @BindView(R.id.recycler_view)
+    RecyclerView recyclerView;
 
     private DictionaryViewModel viewModel;
+    private WordListAdapter listAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_word);
+        ButterKnife.bind(this);
 
         //Create the view model, which is injected via the factory.
         viewModel = ViewModelProviders.of(this, factory).get(DictionaryViewModel.class);
         observeViewModel(viewModel);
-
-
-        searchTv = findViewById(R.id.search_word_et);
-        wordTitle = findViewById(R.id.defined_word_tv);
-        wordPhonetic = findViewById(R.id.word_phonetic);
-        wordLexical = findViewById(R.id.word_lexical_category);
-        wordDefinition = findViewById(R.id.word_definition);
-        wordOrigin = findViewById(R.id.word_origin);
 
         refreshBtn = findViewById(R.id.search_btn);
         refreshBtn.setOnClickListener(new View.OnClickListener() {
@@ -101,11 +109,18 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
         wordTitle.setText(response.getResults().get(0).getId());
         wordPhonetic.setText(response.getResults().get(0).getLexicalEntries().get(0).getPronunciations().get(0).getPhoneticSpelling());
         wordLexical.setText(response.getResults().get(0).getLexicalEntries().get(0).getLexicalCategory());
-        wordDefinition.setText(response.getResults().get(0).getLexicalEntries().get(0).getEntries().get(0).getSenses().get(0).getDefinitions().get(0));
 
-//        if(!response.getResults().get(0).getLexicalEntries().get(0).getEntries().get(0).getEtymologies().get(0).isEmpty()) {
-//            wordOrigin.setText(response.getResults().get(0).getLexicalEntries().get(0).getEntries().get(0).getEtymologies().get(0));
-//        }
+        //Set up the recycler view to display the definition variations
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        listAdapter = new WordListAdapter(this, response);
+        recyclerView.setAdapter(listAdapter);
+        //Add a divider between each definition
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(
+                recyclerView.getContext(),
+                linearLayoutManager.getOrientation()
+        );
+        recyclerView.addItemDecoration(dividerItemDecoration);
     }
 
     public void renderInvalidSearchInput(String message) {

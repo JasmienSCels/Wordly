@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:minHeight="0dp"
     tools:context="com.example.jasmiensofiecels.wordly.view.dailyWord.DailyWordActivity"
     tools:layout_editor_absoluteY="81dp">
@@ -26,6 +27,30 @@
             android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-"
             />
 
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_search_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_layout_linear"
+        android:orientation="horizontal"
+        android:paddingTop="10dp">
+
+
+        <Button
+            android:id="@+id/search_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingTop="10dp"
+            android:soundEffectsEnabled="true"
+            android:text="Search"
+            android:textStyle="normal"
+            tools:layout_editor_absoluteX="205dp"
+            tools:layout_editor_absoluteY="297dp" />
+
     </LinearLayout>
 
 
@@ -35,12 +60,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_below="@+id/search_layout_linear"
+        android:layout_below="@+id/layout_search_button"
         android:orientation="vertical"
         android:paddingBottom="10dp"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="222dp">
-
 
         <LinearLayout
             android:id="@+id/layout_word_tittle"
@@ -98,62 +122,41 @@
             android:orientation="horizontal"
             android:layout_below="@id/layout_word_lexical_category">
 
-            <TextView
-                android:id="@+id/word_definition"
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="10dp"
-                android:layout_gravity="left"
-                android:paddingTop="10dp"
-                android:textColor="@color/colorAccent"
-                android:hint="Definition Definition" />
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:keyboardNavigationCluster="false"
+                tools:listitem="@layout/word_definition_card" />
 
         </LinearLayout>
 
 
-        <LinearLayout
-            android:id="@+id/layout_word_origin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@id/layout_word_definition">
+        <!--<LinearLayout-->
+            <!--android:id="@+id/layout_word_origin"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:layout_below="@id/layout_word_definition">-->
 
-            <TextView
-                android:id="@+id/word_origin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="10dp"
-                android:paddingTop="10dp"
-                android:layout_gravity="left"
-                android:textColor="@color/colorAccent"
-                android:hint="Definition Origin" />
+            <!--<TextView-->
+                <!--android:id="@+id/word_origin"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="left"-->
+                <!--android:hint="Definition Origin"-->
+                <!--android:paddingStart="10dp"-->
+                <!--android:paddingTop="10dp"-->
+                <!--android:textColor="@color/colorAccent"-->
+                <!--android:visibility="invisible" />-->
 
-        </LinearLayout>
-
-
-
-        <LinearLayout
-            android:id="@+id/layout_search_button"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/word_origin"
-            android:paddingTop="10dp"
-            android:orientation="horizontal">
+        <!--</LinearLayout>-->
 
 
-            <Button
-                android:id="@+id/search_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingTop="10dp"
-                android:soundEffectsEnabled="true"
-                android:text="Search"
-                android:textStyle="normal"
-                tools:layout_editor_absoluteX="205dp"
-                tools:layout_editor_absoluteY="297dp" />
 
-        </LinearLayout>
 
     </LinearLayout>
 
