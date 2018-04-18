@@ -3,7 +3,6 @@ package com.example.jasmiensofiecels.wordly.view.dailyWord;
 import android.app.Application;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,7 +68,6 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.ViewHo
                 subDefinitionCount += response.getResults().get(0).getLexicalEntries().get(i).getEntries().get(0).getSenses().size();
             }
         }
-        Log.d("ItemCount", String.valueOf(subDefinitionCount));
         return subDefinitionCount;
     }
 

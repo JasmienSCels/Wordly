@@ -9,7 +9,6 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +18,7 @@ import com.example.jasmiensofiecels.wordly.service.model.OxfordEntry.Example;
 import com.example.jasmiensofiecels.wordly.view.base.BaseActivity;
 import com.example.jasmiensofiecels.wordly.viewModel.DictionaryViewModel;
 import com.example.jasmiensofiecels.wordly.viewModel.DictionaryViewModelFactory;
+import com.github.clans.fab.FloatingActionButton;
 
 import javax.inject.Inject;
 
@@ -39,8 +39,8 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
     DictionaryViewModelFactory factory;
 
     //UI Widgets
-    @BindView(R.id.search_btn)
-    Button refreshBtn;
+    @BindView(R.id.search_fab)
+    FloatingActionButton searchFab;
 
     @BindView(R.id.search_word_et)
     EditText searchTv;
@@ -59,6 +59,8 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
 
     private DictionaryViewModel viewModel;
     private WordListAdapter listAdapter;
+    private LinearLayoutManager linearLayoutManager;
+    private DividerItemDecoration dividerItemDecoration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,12 +69,13 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
         setContentView(R.layout.activity_daily_word);
         ButterKnife.bind(this);
 
+        linearLayoutManager = new LinearLayoutManager(this);
+
         //Create the view model, which is injected via the factory.
         viewModel = ViewModelProviders.of(this, factory).get(DictionaryViewModel.class);
         observeViewModel(viewModel);
 
-        refreshBtn = findViewById(R.id.search_btn);
-        refreshBtn.setOnClickListener(new View.OnClickListener() {
+        searchFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MutableLiveData<String> wordChange = new MutableLiveData<>();
@@ -111,20 +114,28 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
         wordLexical.setText(response.getResults().get(0).getLexicalEntries().get(0).getLexicalCategory());
 
         //Set up the recycler view to display the definition variations
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         listAdapter = new WordListAdapter(this, response);
         recyclerView.setAdapter(listAdapter);
+
+        //Remove previous dividerItemDecoration, otherwise the padding will keep growing in-between cards.
+        recyclerView.removeItemDecoration(dividerItemDecoration);
+
         //Add a divider between each definition
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(
+        dividerItemDecoration = new DividerItemDecoration(
                 recyclerView.getContext(),
                 linearLayoutManager.getOrientation()
         );
         recyclerView.addItemDecoration(dividerItemDecoration);
+        recyclerView.setAlpha(1); //visable
     }
 
     public void renderInvalidSearchInput(String message) {
+        //remove previous search information
+        wordTitle.setText(wordTitle.getHint());
+        wordPhonetic.setText(wordPhonetic.getHint());
+        wordLexical.setText(wordLexical.getHint());
+        recyclerView.setAlpha(0); //invisable
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
-
 }

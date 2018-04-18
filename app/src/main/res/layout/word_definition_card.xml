@@ -32,20 +32,24 @@
             <TextView
                 android:id="@+id/word_list_order"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal|fill_horizontal|center|fill|start"
+                android:elevation="0dp"
                 android:paddingStart="10dp"
-                android:textColor="@color/colorAccent"/>
+                android:paddingTop="10dp"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/word_definition"
-                android:layout_width="match_parent"
+                android:layout_width="367dp"
                 android:layout_height="wrap_content"
-                android:layout_toLeftOf="@+id/word_list_order"
+                android:layout_gravity="center"
+                android:hint="Definition Definition"
                 android:paddingStart="10dp"
-                android:layout_gravity="left"
                 android:paddingTop="10dp"
-                android:textColor="@color/colorAccent"
-                android:hint="Definition Definition" />
+                android:textSize="15sp" />
 
         </LinearLayout>
 
