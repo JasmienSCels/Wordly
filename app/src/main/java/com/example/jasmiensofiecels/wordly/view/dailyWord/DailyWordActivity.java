@@ -115,7 +115,7 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
 
         //Set up the recycler view to display the definition variations
         recyclerView.setLayoutManager(linearLayoutManager);
-        listAdapter = new WordListAdapter(this, response);
+        listAdapter = new WordListAdapter(response);
         recyclerView.setAdapter(listAdapter);
 
         //Remove previous dividerItemDecoration, otherwise the padding will keep growing in-between cards.
