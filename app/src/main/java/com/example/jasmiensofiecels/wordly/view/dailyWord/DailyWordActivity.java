@@ -62,6 +62,7 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
     private LinearLayoutManager linearLayoutManager;
     private DividerItemDecoration dividerItemDecoration;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);
@@ -82,7 +83,7 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
 
                 //Check against null inputs
                 if(searchTv.getText().toString().equals("")) {
-                    renderInvalidSearchInput("Invalid Input");
+                    renderInvalidSearchInput("Please enter a word");
                     return;
                 }
                 wordChange.setValue(searchTv.getText().toString());
