@@ -46,14 +46,14 @@ public class DictionaryViewModelTest {
     }
 
     @Test
-    //The purpose of this test is
+    //The purpose of this test is ensure that the viewModel is calling the appropriate repository method
     public void verifyViewModelCallsRepository() {
         viewModel.getResultObservable().observeForever(observer);
 
         MutableLiveData<String> word = new MutableLiveData<>();
         word.postValue("word");
 
-        //when
+        //When
         viewModel.onWordRefresh(word);
 
         //Then
@@ -61,5 +61,15 @@ public class DictionaryViewModelTest {
     }
 
 
+    @Test
+    //The purpose of this test is ensure that the viewModel is calling the appropriate repository method
+    public void verifyNullInputViewModelCallRepository() {
+        viewModel.getResultObservable().observeForever(observer);
 
+        //when
+        viewModel.onWordRefresh(null);
+
+        //Then
+        verify(repository).getWordOfTheDay("en", null);
+    }
 }
