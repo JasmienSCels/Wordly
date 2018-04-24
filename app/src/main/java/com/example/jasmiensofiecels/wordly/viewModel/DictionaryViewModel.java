@@ -18,7 +18,7 @@ public class DictionaryViewModel extends ViewModel {
 
     public DictionaryRepository repository;
 
-    private static MutableLiveData<Example> resultObservable = new MutableLiveData<>();
+    public static MutableLiveData<Example> resultObservable = new MutableLiveData<>();
 
 
     public DictionaryViewModel(DictionaryRepository repository) {

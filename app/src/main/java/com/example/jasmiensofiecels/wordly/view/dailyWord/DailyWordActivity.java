@@ -95,7 +95,7 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
         });
     }
 
-    private void observeViewModel(final DictionaryViewModel viewModel) {
+    public void observeViewModel(final DictionaryViewModel viewModel) {
         viewModel.getResultObservable().observe(this, new Observer<Example>() {
             @Override
             public void onChanged(@Nullable Example response) {

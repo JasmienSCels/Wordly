@@ -1,23 +1,24 @@
 package com.example.jasmiensofiecels.wordly.viewModel;
 
+import android.arch.core.executor.testing.InstantTaskExecutorRule;
 import android.arch.lifecycle.MutableLiveData;
-import android.util.Log;
 
 import com.example.jasmiensofiecels.wordly.service.model.OxfordEntry.Example;
 import com.example.jasmiensofiecels.wordly.service.repository.DictionaryRepository;
-import com.example.jasmiensofiecels.wordly.view.dailyWord.DailyWordView;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+
+import static org.mockito.Mockito.verify;
+
 
 /**
  * The purpose of this class is to test the functionality of the DictionaryViewModel class.
- *
  *
  * Created by Jasmien Cels on 11/04/2018.
  */
@@ -25,9 +26,10 @@ import org.mockito.MockitoAnnotations;
 @RunWith(JUnit4.class)
 public class DictionaryViewModelTest {
 
-//    @Rule
-//    @JvmField
-
+    @Rule
+    //A JUnit Test Rule that swaps the background executor used by the Architecture Components
+    // with a different one which executes each task synchronously.
+    public InstantTaskExecutorRule rule = new InstantTaskExecutorRule();
 
     private DictionaryViewModel viewModel;
 
@@ -35,57 +37,29 @@ public class DictionaryViewModelTest {
     private DictionaryRepository repository;
 
     @Mock
-    private DictionaryViewModelFactory factory;
-
-    @Mock
-    private DailyWordView view;
-
-
+    private android.arch.lifecycle.Observer<Example> observer;
 
     @Before
-    public void setup() {
-
-        //Initialise mock objects
+    public void init() {
         MockitoAnnotations.initMocks(this);
-
-        //Instantiate the viewModel
-        //TODO: Is the underlying problem here?
-        repository = new DictionaryRepository();
-
         viewModel = new DictionaryViewModel(repository);
-
-
-        //When the repository is called, return an Example object.
-
     }
 
     @Test
-    public void testDictionaryRepository_returnsExampleObject() {
-
-        Log.d("Observable response", "test");
-        MutableLiveData<String> testWord = new MutableLiveData<>();
-        testWord.setValue("test");
-
-        //Create the Example object mocked response.
-        ExampleTest exampleTest = new ExampleTest();
-        exampleTest.setTestExample("test");
-        MutableLiveData<Example> testResponse = new MutableLiveData<>();
-        testResponse.setValue(exampleTest.getTestExample());
-
-        //When the repository object is called, return the above created ExampleTest object.
-        Mockito.when(repository.getWordOfTheDay("en", testWord)).thenReturn(testResponse);
-                //testResponse);
+    //The purpose of this test is
+    public void verifyViewModelCallsRepository() {
+        viewModel.getResultObservable().observeForever(observer);
 
         MutableLiveData<String> word = new MutableLiveData<>();
-        word.setValue("test");
+        word.postValue("word");
 
-        //When
+        //when
         viewModel.onWordRefresh(word);
 
         //Then
-        String resultId = viewModel.getResultObservable().getValue().getResults().get(0).getId();
-        Mockito.verify(resultId).contentEquals("test");
-
+        verify(repository).getWordOfTheDay("en", word);
     }
+
+
 
 }

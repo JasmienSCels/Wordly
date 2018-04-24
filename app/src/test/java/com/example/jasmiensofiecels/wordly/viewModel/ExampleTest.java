@@ -32,6 +32,7 @@ public class ExampleTest {
         return testExample;
     }
 
+    public Result getTestResult() { return  testExample.getResults().get(0); }
 
 
 }
