@@ -7,4 +7,5 @@
     <color name="colorRipple">#F8BBD0</color>
     <color name="colorBackground">#F5F5F5</color>
     <color name="colorGreyText">#9E9E9E</color>
+    <color name="colorWhite">#FFFFFF</color>
 </resources>
