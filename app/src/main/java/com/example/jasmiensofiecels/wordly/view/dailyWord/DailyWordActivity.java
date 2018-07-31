@@ -3,13 +3,17 @@ package com.example.jasmiensofiecels.wordly.view.dailyWord;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,14 +49,14 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
     @BindView(R.id.search_word_et)
     EditText searchTv;
 
+    @BindView(R.id.starBtn)
+    ImageButton starButton;
+
     @BindView(R.id.defined_word_tv)
     TextView wordTitle;
 
     @BindView(R.id.word_phonetic)
     TextView wordPhonetic;
-
-    @BindView(R.id.word_lexical_category)
-    TextView wordLexical;
 
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
@@ -76,21 +80,41 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
         viewModel = ViewModelProviders.of(this, factory).get(DictionaryViewModel.class);
         observeViewModel(viewModel);
 
+        //Hide Soft Keyboard until an EditText View is clicked
+        getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
+        );
+
         searchFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MutableLiveData<String> wordChange = new MutableLiveData<>();
+
+                //Hide  keyboard
+                if (getCurrentFocus() != null) {
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                }
 
                 //Check against null inputs
                 if(searchTv.getText().toString().equals("")) {
                     renderInvalidSearchInput("Please enter a word");
                     return;
                 }
+
                 wordChange.setValue(searchTv.getText().toString());
                 viewModel.onWordRefresh(wordChange);
 
                 //TODO: why do I need to observe again??? Scope?
                 observeViewModel(viewModel);
+            }
+        });
+
+
+        starButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }
@@ -112,14 +136,13 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
     public void renderWordInformation(Example response) {
         wordTitle.setText(response.getResults().get(0).getId());
         wordPhonetic.setText(response.getResults().get(0).getLexicalEntries().get(0).getPronunciations().get(0).getPhoneticSpelling());
-        wordLexical.setText(response.getResults().get(0).getLexicalEntries().get(0).getLexicalCategory());
 
         //Set up the recycler view to display the definition variations
         recyclerView.setLayoutManager(linearLayoutManager);
         listAdapter = new WordListAdapter(response);
         recyclerView.setAdapter(listAdapter);
 
-        //Remove previous dividerItemDecoration, otherwise the padding will keep growing in-between cards.
+        //Remove previous dividerItemDecoration, otherwise the padding will keep growing in-between cards as the number of searches increases.
         recyclerView.removeItemDecoration(dividerItemDecoration);
 
         //Add a divider between each definition
@@ -135,7 +158,6 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
         //remove previous search information
         wordTitle.setText(wordTitle.getHint());
         wordPhonetic.setText(wordPhonetic.getHint());
-        wordLexical.setText(wordLexical.getHint());
         recyclerView.setAlpha(0); //invisable
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }

@@ -22,7 +22,6 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.assertThat;
@@ -57,7 +56,7 @@ public class ValidDailyWordActivityTest {
 
         //When
         onView(withId(R.id.search_word_et)) //get text edit widget
-                .perform(typeText(validInput), closeSoftKeyboard()); //insert valid searchable word
+                .perform(typeText(validInput)); //insert valid searchable word
         onView(withId(R.id.search_fab)).perform(click()); //Action click on the search button
 
         try {
@@ -66,7 +65,6 @@ public class ValidDailyWordActivityTest {
             Log.d("Error", "thread sleep");
         }
     }
-
 
     @Test
     //The purpose of this test is to ensure that the definedWord textView gets changed to the searched word

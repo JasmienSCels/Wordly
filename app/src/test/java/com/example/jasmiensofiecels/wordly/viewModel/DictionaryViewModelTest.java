@@ -60,7 +60,6 @@ public class DictionaryViewModelTest {
         verify(repository).getWordOfTheDay("en", word);
     }
 
-
     @Test
     //The purpose of this test is ensure that the viewModel is calling the appropriate repository method
     public void verifyNullInputViewModelCallRepository() {

@@ -2,7 +2,6 @@ package com.example.jasmiensofiecels.wordly.view.dailyWord;
 
 import android.app.Application;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +36,7 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.ViewHo
 
     private Example response;
     private ArrayList<String> wordDefinitions;
+    private ArrayList<String> wordLexicals = new ArrayList<>();
 
     public WordListAdapter(Example response) {
         this.response = response;
@@ -48,13 +48,13 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.ViewHo
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.word_definition_card, viewGroup, false);
         ViewHolder viewHolder = new ViewHolder(view);
-        viewHolder.setDataOnCard(i+1, wordDefinitions.get(i));
+        viewHolder.setDataOnCard(i+1, wordLexicals.get(i), wordDefinitions.get(i));
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        viewHolder.setDataOnCard(i+1, wordDefinitions.get(i));
+        viewHolder.setDataOnCard(i+1, wordLexicals.get(i), wordDefinitions.get(i));
     }
 
     @Override
@@ -79,9 +79,13 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.ViewHo
                 for(int s = 0; s < response.getResults().get(0).getLexicalEntries().get(i).getEntries().get(0).getSenses().size(); s++) {
                         if (!response.getResults().get(0).getLexicalEntries().get(i).getEntries().get(0).getSenses().isEmpty()) {
                             if(!response.getResults().get(0).getLexicalEntries().get(i).getEntries().get(0).getSenses().get(s).getDefinitions().get(0).isEmpty()) {
-                                Log.d("sense", response.getResults().get(0).getLexicalEntries().get(i).getEntries().get(0).getSenses().get(s).getDefinitions().get(0).toString());
+
                                 String subDefinition = response.getResults().get(0).getLexicalEntries().get(i).getEntries().get(0).getSenses().get(s).getDefinitions().get(0);
                                 definitions.add(subDefinition);
+
+                                //Add the subDefinition's lexical category
+                                String lexical = response.getResults().get(0).getLexicalEntries().get(i).getLexicalCategory();
+                                wordLexicals.add(lexical);
                             }
                         }
                 }
@@ -102,13 +106,17 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.ViewHo
         @BindView(R.id.word_definition)
         TextView wordDefinition;
 
+        @BindView(R.id.word_lexical_category)
+        TextView wordLexical;
+
         private ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
 
-        public void setDataOnCard(int order, String definition) {
+        public void setDataOnCard(int order, String lexical, String definition) {
             wordOrder.setText(String.valueOf(order));
+            wordLexical.setText("-" + lexical + "-");
             wordDefinition.setText(definition);
         }
     }
