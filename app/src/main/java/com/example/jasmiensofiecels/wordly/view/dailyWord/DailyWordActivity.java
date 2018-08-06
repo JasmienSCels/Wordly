@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -43,22 +44,33 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
     DictionaryViewModelFactory factory;
 
     //UI Widgets
+
+    @BindView(R.id.toolbar)
+    @javax.annotation.Nullable
+    Toolbar toolbar;
+
     @BindView(R.id.search_fab)
+    @Nullable
     FloatingActionButton searchFab;
 
     @BindView(R.id.search_word_et)
+    @Nullable
     EditText searchTv;
 
     @BindView(R.id.starBtn)
+    @Nullable
     ImageButton starButton;
 
     @BindView(R.id.defined_word_tv)
+    @Nullable
     TextView wordTitle;
 
     @BindView(R.id.word_phonetic)
+    @Nullable
     TextView wordPhonetic;
 
     @BindView(R.id.recycler_view)
+    @Nullable
     RecyclerView recyclerView;
 
     private DictionaryViewModel viewModel;
@@ -151,14 +163,14 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
                 linearLayoutManager.getOrientation()
         );
         recyclerView.addItemDecoration(dividerItemDecoration);
-        recyclerView.setAlpha(1); //visable
+        recyclerView.setAlpha(1); //visible
     }
 
     public void renderInvalidSearchInput(String message) {
         //remove previous search information
         wordTitle.setText(wordTitle.getHint());
         wordPhonetic.setText(wordPhonetic.getHint());
-        recyclerView.setAlpha(0); //invisable
+        recyclerView.setAlpha(0); //invisible
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 }
