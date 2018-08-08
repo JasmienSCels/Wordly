@@ -44,7 +44,6 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
     DictionaryViewModelFactory factory;
 
     //UI Widgets
-
     @BindView(R.id.toolbar)
     @javax.annotation.Nullable
     Toolbar toolbar;
@@ -85,6 +84,13 @@ public class DailyWordActivity extends BaseActivity implements DailyWordView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_word);
         ButterKnife.bind(this);
+
+//        setSupportActionBar(toolbar);
+
+//        ActionBar actionbar = getSupportActionBar();
+//        actionbar.setDisplayHomeAsUpEnabled(true);
+//        actionbar.setHomeAsUpIndicator(R.drawable.ic_burger_menu);
+
 
         linearLayoutManager = new LinearLayoutManager(this);
 
