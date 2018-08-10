@@ -12,9 +12,8 @@
         android:id="@+id/base_activity"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/search_word_et"/>
+
+        />
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
