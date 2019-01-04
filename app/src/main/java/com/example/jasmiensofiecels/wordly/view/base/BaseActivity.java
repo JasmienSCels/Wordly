@@ -47,6 +47,7 @@ public class BaseActivity extends AppCompatActivity implements BaseView {
         setContentView(R.layout.activity_base);
         ButterKnife.bind(this);
 
+
         setSupportActionBar(toolbar);
 
         ActionBar actionbar = getSupportActionBar();

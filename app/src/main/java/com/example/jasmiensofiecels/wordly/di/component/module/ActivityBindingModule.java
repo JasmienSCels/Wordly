@@ -1,11 +1,10 @@
 package com.example.jasmiensofiecels.wordly.di.component.module;
 
+import com.example.jasmiensofiecels.wordly.service.model.Room.DatabaseModule;
 import com.example.jasmiensofiecels.wordly.view.base.BaseActivity;
 import com.example.jasmiensofiecels.wordly.view.base.BaseModule;
 import com.example.jasmiensofiecels.wordly.view.dailyWord.DailyWordActivity;
 import com.example.jasmiensofiecels.wordly.view.dailyWord.DailyWordModule;
-
-import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.android.AndroidInjectionModule;
@@ -18,14 +17,15 @@ import dagger.android.ContributesAndroidInjector;
  */
 
 //Bindings to ensure the usability of the dagger framework.
-@Singleton
+
 @Module(includes = AndroidInjectionModule.class)
 public abstract class ActivityBindingModule {
 
     @ContributesAndroidInjector(modules = {BaseModule.class})
     abstract BaseActivity contributeBaseActivityInjector();
 
-    @ContributesAndroidInjector(modules = {DailyWordModule.class})
+    @ContributesAndroidInjector(modules = {DailyWordModule.class, DatabaseModule.class})
     abstract DailyWordActivity contributeDailyWordActivityInjector();
+
 
 }

@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;
 
+import com.example.jasmiensofiecels.wordly.service.model.Room.repository.StarredWordRepository;
 import com.example.jasmiensofiecels.wordly.service.repository.DictionaryRepository;
 
 import javax.inject.Inject;
@@ -19,10 +20,12 @@ import javax.inject.Inject;
 public class DictionaryViewModelFactory implements ViewModelProvider.Factory {
 
     private DictionaryRepository repository;
+    private StarredWordRepository starredWordRepository;
 
     @Inject
-    public DictionaryViewModelFactory(DictionaryRepository repository) {
+    public DictionaryViewModelFactory(DictionaryRepository repository, StarredWordRepository starredWordRepository) {
         this.repository = repository;
+        this.starredWordRepository = starredWordRepository;
     }
 
     @NonNull
@@ -30,7 +33,7 @@ public class DictionaryViewModelFactory implements ViewModelProvider.Factory {
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
 
         if(modelClass.isAssignableFrom(DictionaryViewModel.class)) {
-            return (T) new DictionaryViewModel(repository);
+            return (T) new DictionaryViewModel(repository, starredWordRepository);
         }
 
         throw new IllegalArgumentException("Illegal Argument Exception: Unknown Model View");

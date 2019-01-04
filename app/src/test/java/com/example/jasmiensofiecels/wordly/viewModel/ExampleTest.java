@@ -1,7 +1,6 @@
 package com.example.jasmiensofiecels.wordly.viewModel;
 
 import com.example.jasmiensofiecels.wordly.service.model.OxfordEntry.Example;
-import com.example.jasmiensofiecels.wordly.service.model.OxfordEntry.Result;
 
 import java.util.ArrayList;
 import java.util.List;

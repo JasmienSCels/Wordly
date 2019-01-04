@@ -6,4 +6,8 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <string name ="appID">cda190b7</string>
+    <string name="acceptID">application/json</string>
+    <string name="appKey">fe4d42ccf21a2db3396e370769987348</string>
 </resources>

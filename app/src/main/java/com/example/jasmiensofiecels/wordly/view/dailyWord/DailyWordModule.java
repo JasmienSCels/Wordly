@@ -1,5 +1,6 @@
 package com.example.jasmiensofiecels.wordly.view.dailyWord;
 
+import com.example.jasmiensofiecels.wordly.service.model.Room.repository.StarredWordRepository;
 import com.example.jasmiensofiecels.wordly.service.repository.DictionaryRepository;
 import com.example.jasmiensofiecels.wordly.viewModel.DictionaryViewModelFactory;
 
@@ -13,7 +14,7 @@ import dagger.Provides;
  * Created by Jasmien Cels on 23/03/2018.
  */
 
-@Module 
+@Module
 public class DailyWordModule {
 
     @Provides
@@ -22,8 +23,8 @@ public class DailyWordModule {
     }
 
     @Provides
-    public DictionaryViewModelFactory provideDictionaryViewModelFactory(DictionaryRepository repository) {
-        return new DictionaryViewModelFactory(repository);
+    public DictionaryViewModelFactory provideDictionaryViewModelFactory(DictionaryRepository repository, StarredWordRepository starredWordRepository) {
+        return new DictionaryViewModelFactory(repository, starredWordRepository);
     }
 
 }

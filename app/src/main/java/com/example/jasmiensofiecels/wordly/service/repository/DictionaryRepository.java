@@ -51,7 +51,7 @@ public class DictionaryRepository {
 
         //API call for word entry
         //TODO: Store id and key in string file.
-        Call<Example> call = oxfordDictionaryAPI.getWordOfTheDay( "application/json","cda190b7", "fe4d42ccf21a2db3396e370769987348", sourceLang, word);
+        Call<Example> call = oxfordDictionaryAPI.getWordOfTheDay( "application/json", "cda190b7", "fe4d42ccf21a2db3396e370769987348", sourceLang, word);
         call.enqueue(new Callback<Example>() {
 
             @Override
