@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <include
+        layout="@layout/activity_base"
+        android:id="@+id/base_activity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        />
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <EditText
+        android:id="@+id/search_word_et"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-"
+        android:hint="Search"
+        android:paddingEnd="10dp"
+        android:paddingStart="66dp"
+        android:textAlignment="center"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/search_fab" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/search_fab"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="184dp"
+            android:src="@drawable/ic_search_icon"
+            app:fab_colorNormal="@color/colorAccent"
+            app:fab_colorPressed="@color/colorAccentDark"
+            app:fab_colorRipple="@color/colorRipple"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+        <TextView
+        android:id="@+id/defined_word_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="word"
+        android:text="Word"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/search_fab"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+        <ImageButton
+        android:id="@+id/starBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorBackground"
+        app:layout_constraintTop_toBottomOf="@id/defined_word_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/btn_star" />
+
+        <TextView
+        android:id="@+id/word_phonetic"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Phonetic Spelling"
+        android:paddingBottom="8dp"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@id/starBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+        <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="9dp"
+        android:keyboardNavigationCluster="false"
+        app:layout_constraintTop_toBottomOf="@id/word_phonetic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/word_definition_card" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</android.support.v4.widget.DrawerLayout>
